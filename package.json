@@ -11,10 +11,10 @@
     "posttest": "npm run lint",
     "serve": "node server.js --env=dev",
     "serve:dist": "node server.js --env=dist",
-    "dist": "npm run copy & webpack --env=docs",
+    "dist": "npm run copy & webpack --env=dist",
     "lint": "eslint ./src",
     "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./docs",
-    "clean": "rimraf dist/*",
+    "clean": "rimraf docs/*",
     "release:major": "npm version major && npm publish && git push --follow-tags",
     "release:minor": "npm version minor && npm publish && git push --follow-tags",
     "release:patch": "npm version patch && npm publish && git push --follow-tags"
