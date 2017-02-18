@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-require('styles/svg/Triangle.scss')
+import './Triangle.scss'
 
 class TriangleComponent extends React.Component {
   constructor(props) {

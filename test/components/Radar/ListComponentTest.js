@@ -7,9 +7,9 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import ListComponent from 'components/radar/ListComponent.js';
+import ListComponent from 'components/radar/RadarList.js';
 
-describe('ListComponent', () => {
+describe('RadarList', () => {
   let component;
 
   beforeEach(() => {

@@ -7,7 +7,7 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import ButtonComponent from 'components/common/ButtonComponent.js';
+import ButtonComponent from 'components/common/Button.js';
 
 describe('ButtonComponent', () => {
   let component;

@@ -7,7 +7,7 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import CircleComponent from 'components/svg/CircleComponent.js';
+import CircleComponent from 'components/svg/Circle.js';
 
 describe('CircleComponent', () => {
   let component;

@@ -70,6 +70,8 @@
     "normalize.css": "^4.0.0",
     "react": "15.2.1",
     "react-bootstrap": "^0.29.4",
+    "react-dnd": "^2.2.3",
+    "react-dnd-html5-backend": "^2.2.3",
     "react-dom": "15.2.1",
     "uuid-js": "^0.7.5"
   }

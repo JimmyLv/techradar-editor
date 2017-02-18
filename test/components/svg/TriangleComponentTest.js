@@ -7,7 +7,7 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import TriangleComponent from 'components/svg/TriangleComponent.js';
+import TriangleComponent from 'components/svg/Triangle.js';
 
 describe('TriangleComponent', () => {
   let component;

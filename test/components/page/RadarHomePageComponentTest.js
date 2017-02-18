@@ -7,7 +7,7 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import RadarHomePageComponent from 'components/page/RadarHomePageComponent.js';
+import RadarHomePageComponent from 'components/page/HomePage.js';
 
 describe('RadarHomePageComponent', () => {
   let component;

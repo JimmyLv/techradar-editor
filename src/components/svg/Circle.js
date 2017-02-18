@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-require('styles/svg/Circle.scss')
+import './Circle.scss'
 
 class CircleComponent extends React.Component {
   constructor(props) {

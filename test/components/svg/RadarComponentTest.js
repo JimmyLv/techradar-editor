@@ -7,7 +7,7 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import RadarComponent from 'components/svg/RadarComponent.js';
+import RadarComponent from 'components/svg/Radar.js';
 
 describe('RadarComponent', () => {
   let component;

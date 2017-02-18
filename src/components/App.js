@@ -1,14 +1,14 @@
 // require('normalize.css/normalize.css');
-require('styles/App.css')
+import './App.css'
 
 import React from 'react'
-import RadarHomePageComponent from './page/RadarHomePageComponent'
-import Radar from './svg/RadarComponent'
-import ListComponent from './Radar/ListComponent'
+import HomePage from './page/HomePage'
+import Radar from './svg/Radar'
+import ListComponent from './Radar/RadarList'
 
-var UUID = require('uuid-js')
+const UUID = require('uuid-js');
 
-class AppComponent extends React.Component {
+class App extends React.Component {
   constructor() {
     super()
     this.state = {page: 'create', radius: 300, arr: []}
@@ -65,7 +65,7 @@ class AppComponent extends React.Component {
     }
 
     return (
-      <RadarHomePageComponent showRadar={this.navigateToRadarPage.bind(this)}/>
+      <HomePage showRadar={this.navigateToRadarPage.bind(this)}/>
     )
   }
 
@@ -102,6 +102,6 @@ class AppComponent extends React.Component {
   }
 }
 
-AppComponent.defaultProps = {}
+App.defaultProps = {}
 
-export default AppComponent
+export default App

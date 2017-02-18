@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-require('styles/common/Button.scss')
+import './Button.scss'
 
-class ButtonComponent extends React.Component {
+class Button extends React.Component {
     constructor(props) {
       super(props)
       this.title = props.title
@@ -18,10 +18,8 @@ class ButtonComponent extends React.Component {
     }
 }
 
-ButtonComponent.displayName = 'CommonButtonComponent'
-
 // Uncomment properties you need
-// ButtonComponent.propTypes = {};
-// ButtonComponent.defaultProps = {};
+// Button.propTypes = {};
+// Button.defaultProps = {};
 
-export default ButtonComponent
+export default Button

@@ -3,18 +3,18 @@
 import React from 'react'
 import {Button, Image, Grid, Row, Col} from 'react-bootstrap'
 
-require('styles/page/RadarHomePage.scss')
+import './HomePage.scss'
 
-class RadarHomePageComponent extends React.Component {
-  
+class HomePage extends React.Component {
+
   constructor(props) {
     super(props)
     this.onCreateRadar = props.showRadar
   }
-  
+
   render() {
     return (
-      <div className="radarhomepage-component">
+      <div>
         <Grid>
           <Row>
             <Col md={12}>
@@ -35,10 +35,8 @@ class RadarHomePageComponent extends React.Component {
   }
 }
 
-RadarHomePageComponent.displayName = 'PageRadarHomePageComponent'
-
 // Uncomment properties you need
-// RadarHomePageComponent.propTypes = {};
-// RadarHomePageComponent.defaultProps = {};
+// HomePage.propTypes = {};
+// HomePage.defaultProps = {};
 
-export default RadarHomePageComponent
+export default HomePage
