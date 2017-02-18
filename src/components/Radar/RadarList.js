@@ -5,19 +5,30 @@ import React from 'react'
 import './RadarList.scss'
 
 class RadarList extends React.Component {
-
   constructor(props) {
-    super()
-    this.state = {items: props.items}
-    this.title = props.title
+    super(props)
+    this.state = {value: ''}
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value})
+  }
+
+  handleSubmit(event) {
+    alert('Changed: ' + this.state.value)
+    event.preventDefault()
   }
 
   render() {
+    const { title, points } = this.props
     return (
       <div>
-        {this.title}
+        {title}
         <ul>
-          {this.state.items.map((item) => <li>{item.index}. {item.name}</li>)}
+          {points.map((item) => <li>{item.index}. {item.name}</li>)}
         </ul>
       </div>
     )
@@ -25,7 +36,7 @@ class RadarList extends React.Component {
 }
 
 // Uncomment properties you need
-// RadarList.propTypes = {};
-// RadarList.defaultProps = {};
+// RadarList.propTypes = {}
+// RadarList.defaultProps = {}
 
 export default RadarList

@@ -4,22 +4,30 @@ import './App.css'
 import React from 'react'
 import Radar from './svg/Radar'
 import RadarList from './Radar/RadarList'
+import { loadState, saveState } from './localStorage'
 
 const UUID = require('uuid-js')
 
 class App extends React.Component {
   constructor() {
     super()
+    let initialState = loadState() || {}
     this.state = {
-      page: 'create', radius: 300, points: []
+      page: 'create',
+      radius: 300,
+      points: initialState.points || []
     }
     this.screen2Cartesian = this.screen2Cartesian.bind(this)
   }
 
   didChangedPoints(points) {
     this.setState({
-      page: 'create', margin: 60, radius: 250, points: points
+      page: 'create',
+      margin: 60,
+      radius: 250,
+      points: points
     })
+    saveState({ points })
   }
 
   cartesian2Screen(point) {
@@ -45,9 +53,12 @@ class App extends React.Component {
   }
 
   render() {
-    const {points, radius} = this.state
+    const { points, radius } = this.state
     let items = points
-      .map((point) => ({...point, index: points.indexOf(point) + 1}))
+      .map((point) => ({
+        ...point,
+        index: points.indexOf(point) + 1
+      }))
 
     let items2nd = items.filter((item) => {
       return item.x < 0 && item.y > 0
@@ -65,14 +76,14 @@ class App extends React.Component {
           <div className="col-md-4">
             <RadarList
               title="Techniques"
-              items={items2nd}
+              points={items2nd}
               key={`${UUID.create().toString()}`}/>
           </div>
           <div className="col-md-4 col-md-offset-4">
             <RadarList
               title="Tools"
-              items={items
-                .filter(({x, y}) => x > 0 && y > 0)
+              points={items
+                .filter(({ x, y }) => x > 0 && y > 0)
                 .map((point) => this.cartesian2Screen(point))}
               key={`${UUID.create().toString()}`}/>
           </div>
@@ -88,13 +99,13 @@ class App extends React.Component {
           <div className="col-md-4">
             <RadarList
               title="Platforms"
-              items={items3rd}
+              points={items3rd}
               key={`${UUID.create().toString()}`}/>
           </div>
           <div className="col-md-4 col-md-offset-4">
             <RadarList
               title="Languages & Frameworks"
-              items={items4th}
+              points={items4th}
               key={`${UUID.create().toString()}`}/>
           </div>
         </div>

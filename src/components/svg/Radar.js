@@ -25,7 +25,7 @@ class RadarComponent extends React.Component {
       y: event.nativeEvent.offsetY,
       id: UUID.create().toString()
     }
-    point = this.screen2Cartesian(point)
+    point = this.screen2Cartesian(point) // create from click event
     let pointSelected = points
       .filter(item => (
         (point.x >= item.x - pointRadius)
