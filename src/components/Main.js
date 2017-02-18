@@ -1,24 +1,22 @@
 // require('normalize.css/normalize.css');
-require('styles/App.css');
+require('styles/App.css')
 
-import React from 'react';
-import RadarItemListPageComponent from './page/RadarItemListPageComponent';
-import RadarHomePageComponent from './page/RadarHomePageComponent';
-import Radar from './svg/RadarComponent';
-import ListComponent from './Radar/ListComponent';
-import {Button, Image, Grid, Row, Col} from 'react-bootstrap';
+import React from 'react'
+import RadarHomePageComponent from './page/RadarHomePageComponent'
+import Radar from './svg/RadarComponent'
+import ListComponent from './Radar/ListComponent'
 
-var UUID = require('uuid-js');
+var UUID = require('uuid-js')
 
 class AppComponent extends React.Component {
   constructor() {
-    super();
-    this.state = {page: 'create', radius: 300, arr: []};
-    this.screen2Cartesian = this.screen2Cartesian.bind(this);
+    super()
+    this.state = {page: 'create', radius: 300, arr: []}
+    this.screen2Cartesian = this.screen2Cartesian.bind(this)
   }
 
   navigateToRadarPage() {
-    this.setState({page: 'create', radius: 300, arr:[]});
+    this.setState({page: 'create', radius: 300, arr:[]})
   }
 
   render() {
@@ -27,17 +25,17 @@ class AppComponent extends React.Component {
 
       let items1st = items.filter((item) => {
         return item.x > 0 && item.y > 0
-      }).map(this.cartesian2Screen.bind(this));
+      }).map(this.cartesian2Screen.bind(this))
       let items2nd = items.filter((item) => {
         return item.x < 0 && item.y > 0
-      }).map(this.cartesian2Screen.bind(this));
+      }).map(this.cartesian2Screen.bind(this))
       let items3rd = items.filter((item) => {
         return item.x < 0 && item.y < 0
-      }).map(this.cartesian2Screen.bind(this));
+      }).map(this.cartesian2Screen.bind(this))
       let items4th = items.filter((item) => {
         return item.x > 0 && item.y < 0
-      }).map(this.cartesian2Screen.bind(this));
-      let points = this.state.arr;
+      }).map(this.cartesian2Screen.bind(this))
+      let points = this.state.arr
       return (
         <div className="container">
           <div className="row">
@@ -63,12 +61,12 @@ class AppComponent extends React.Component {
             </div>
           </div>
         </div>
-      );
+      )
     }
 
     return (
       <RadarHomePageComponent showRadar={this.navigateToRadarPage.bind(this)}/>
-    );
+    )
   }
 
   cartesian2Screen(point) {
@@ -94,16 +92,16 @@ class AppComponent extends React.Component {
   }
 
   didChangedPoints(points) {
-    this.setState({page: 'create', margin: 60, radius: 250, arr: points});
+    this.setState({page: 'create', margin: 60, radius: 250, arr: points})
   }
 
   points2Items(point) {
-    let item = point;
-    item.index = this.state.arr.indexOf(item) + 1;
-    return item;
+    let item = point
+    item.index = this.state.arr.indexOf(item) + 1
+    return item
   }
 }
 
-AppComponent.defaultProps = {};
+AppComponent.defaultProps = {}
 
-export default AppComponent;
+export default AppComponent

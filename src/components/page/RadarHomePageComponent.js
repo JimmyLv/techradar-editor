@@ -1,15 +1,15 @@
-'use strict';
+'use strict'
 
-import React from 'react';
-import {Button, Image, Grid, Row, Col} from 'react-bootstrap';
+import React from 'react'
+import {Button, Image, Grid, Row, Col} from 'react-bootstrap'
 
-require('styles/page/RadarHomePage.scss');
+require('styles/page/RadarHomePage.scss')
 
 class RadarHomePageComponent extends React.Component {
   
   constructor(props) {
-    super(props);
-    this.onCreateRadar = props.showRadar;
+    super(props)
+    this.onCreateRadar = props.showRadar
   }
   
   render() {
@@ -31,14 +31,14 @@ class RadarHomePageComponent extends React.Component {
           </Row>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
-RadarHomePageComponent.displayName = 'PageRadarHomePageComponent';
+RadarHomePageComponent.displayName = 'PageRadarHomePageComponent'
 
 // Uncomment properties you need
 // RadarHomePageComponent.propTypes = {};
 // RadarHomePageComponent.defaultProps = {};
 
-export default RadarHomePageComponent;
+export default RadarHomePageComponent

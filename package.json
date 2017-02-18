@@ -13,6 +13,7 @@
     "serve:dist": "node server.js --env=dist",
     "dist": "npm run copy & webpack --env=dist",
     "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
     "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./docs",
     "clean": "rimraf docs/*",
     "release:major": "npm version major && npm publish && git push --follow-tags",

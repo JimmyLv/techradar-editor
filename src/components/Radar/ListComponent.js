@@ -1,17 +1,15 @@
-'use strict';
+'use strict'
 
-import React from 'react';
+import React from 'react'
 
-require('styles/radar/List.scss');
-
-var UUID = require('uuid-js');
+require('styles/radar/List.scss')
 
 class ListComponent extends React.Component {
 
   constructor(props) {
-    super();
+    super()
     this.state = {items: props.items}
-    this.title = props.title;
+    this.title = props.title
   }
 
   render() {
@@ -22,19 +20,19 @@ class ListComponent extends React.Component {
         {
           this.state.items
             .map((item) => {
-              return (<li>{item.index}. {item.name}</li>);
+              return (<li>{item.index}. {item.name}</li>)
             })
         }
         </ul>
         </div>
-    );
+    )
   }
 }
 
-ListComponent.displayName = 'RadarListComponent';
+ListComponent.displayName = 'RadarListComponent'
 
 // Uncomment properties you need
 // ListComponent.propTypes = {};
 // ListComponent.defaultProps = {};
 
-export default ListComponent;
+export default ListComponent
