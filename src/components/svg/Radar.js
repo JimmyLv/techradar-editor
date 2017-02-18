@@ -13,15 +13,20 @@ class RadarComponent extends React.Component {
     super()
     this.radius = props.radius
     this.didChangedPoints = props.didChangedPoints
-    this.state = {points: props.points}
+    this.state = { points: props.points }
   }
 
   onCreateANewPoint(event) {
     let pointRadius = 0.05
     let points = this.state.points
-    let point = {type: 'new', x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY, id: UUID.create().toString()}
+    let point = {
+      type: 'new',
+      x: event.nativeEvent.offsetX,
+      y: event.nativeEvent.offsetY,
+      id: UUID.create().toString()
+    }
     point = this.screen2Cartesian(point)
-    let deletePoints = points.filter(function(item){
+    let deletePoints = points.filter(function (item) {
       return (point.x >= item.x - pointRadius) && (point.x <= item.x + pointRadius) && (point.y >= item.y - pointRadius) && (point.y <= item.y + pointRadius)
     })
     if (deletePoints.length > 0) {
@@ -37,7 +42,7 @@ class RadarComponent extends React.Component {
       point.type = type ? 'new' : 'old'
       points.push(point)
     }
-    this.setState({points: points})
+    this.setState({ points: points })
     this.didChangedPoints(points)
   }
 
@@ -96,17 +101,27 @@ class RadarComponent extends React.Component {
 
     return (
       <svg width={length} height={length} version='1.1'
-xmlns='http://www.w3.org/2000/svg' onClick={this.onCreateANewPoint.bind(this)}>
+           xmlns='http://www.w3.org/2000/svg' onClick={this.onCreateANewPoint.bind(this)}>
         <circle cx={radius} cy={radius} r={radius} fill='#F5F5F5'/>
         <circle cx={radius} cy={radius} r={accessR} fill='#EEEEEE' stroke='white' stroke-width='2'/>
         <circle cx={radius} cy={radius} r={trialR} fill='#E0E0E0' stroke='white' stroke-width='2'/>
         <circle cx={radius} cy={radius} r={adoptR} fill='#BDBDBD' stroke='white' stroke-width='2'/>
-        <rect x={serviceTrackOrigin} y='0' width={serviceTrackWidth} height={length} fill='rgba(255, 255, 255, 0.5)' class='service-track'/>
-        <rect x='0' y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill='rgba(255, 255, 255, 0.5)' class='service-track'/>
-        <text x={holdTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle' dominantBaseline='central'>HOLD</text>
-        <text x={assessTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle' dominantBaseline='central'>ASSESS</text>
-        <text x={trialTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle' dominantBaseline='central'>TRIAL</text>
-        <text x={adoptTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle' dominantBaseline='central'>ADOPT</text>
+        <rect x={serviceTrackOrigin} y='0' width={serviceTrackWidth} height={length} fill='rgba(255, 255, 255, 0.5)'
+              class='service-track'/>
+        <rect x='0' y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill='rgba(255, 255, 255, 0.5)'
+              class='service-track'/>
+        <text x={holdTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle'
+              dominantBaseline='central'>HOLD
+        </text>
+        <text x={assessTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle'
+              dominantBaseline='central'>ASSESS
+        </text>
+        <text x={trialTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle'
+              dominantBaseline='central'>TRIAL
+        </text>
+        <text x={adoptTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle'
+              dominantBaseline='central'>ADOPT
+        </text>
         {
           this.state.points
             .map(item => {
@@ -120,18 +135,22 @@ xmlns='http://www.w3.org/2000/svg' onClick={this.onCreateANewPoint.bind(this)}>
             })
         }
         {
-          this.state.points.map((item) => {
-            let item1 = item
-            let index = this.state.points.indexOf(item) + 1
-            item1.index = index
-            return item1
-          }).map((point) => {
-            return this.cartesian2Screen(point)
-          })
-            .map(item => {
-              return (<text x={item.x} y={item.y} fill='#FFFFFF' fontSize={pointRadius} textAnchor='middle'
-                            dominantBaseline='central'>{item.index}</text>)
-            })
+          this.state.points
+            .map((item) => ({
+              ...item,
+              index: this.state.points.indexOf(item) + 1
+            }))
+            .map((point) => this.cartesian2Screen(point))
+            .map(item =>
+              <text x={item.x}
+                    y={item.y}
+                    fill='#FFFFFF'
+                    fontSize={pointRadius}
+                    textAnchor='middle'
+                    dominantBaseline='central'
+              >
+                {item.index}
+              </text>)
         }
       </svg>
     )
