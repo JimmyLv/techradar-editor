@@ -1,25 +1,33 @@
 'use strict'
 
 import React from 'react'
-
+import Button from '../common/Button'
+import _ from 'lodash'
 import './RadarList.scss'
 
 class RadarList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {value: ''}
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value})
-  }
+  handleClick(point) {
+    let enterName = prompt('Enter a value')
+    if (enterName === null) {
+      return
+    }
+    let toChange = confirm('Are u sure?')
+    if (toChange) {
+      let points = this.props.points
 
-  handleSubmit(event) {
-    alert('Changed: ' + this.state.value)
-    event.preventDefault()
+      const mergedPoints = this.props.allPoints.map(
+        (item) => {
+          if (item.id === point.id) {
+            item.name = enterName
+          }
+          return item
+        })
+      this.props.updatePoint(mergedPoints)
+    }
   }
 
   render() {
@@ -28,7 +36,12 @@ class RadarList extends React.Component {
       <div>
         {title}
         <ul>
-          {points.map((item) => <li>{item.index}. {item.name}</li>)}
+          {points.map((point) => <li>
+            <span>{point.index}. {point.name}    </span>
+            <Button title='修改'
+                    onClick={() => this.handleClick(point)}
+            />
+          </li>)}
         </ul>
       </div>
     )

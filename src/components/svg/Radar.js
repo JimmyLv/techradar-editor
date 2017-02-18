@@ -117,22 +117,12 @@ class RadarComponent extends React.Component {
         <circle cx={radius} cy={radius} r={accessR} fill='#EEEEEE' stroke='white' stroke-width='2'/>
         <circle cx={radius} cy={radius} r={trialR} fill='#E0E0E0' stroke='white' stroke-width='2'/>
         <circle cx={radius} cy={radius} r={adoptR} fill='#BDBDBD' stroke='white' stroke-width='2'/>
-        <rect x={serviceTrackOrigin} y='0' width={serviceTrackWidth} height={length} fill='rgba(255, 255, 255, 0.5)'
-              class='service-track'/>
-        <rect x='0' y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill='rgba(255, 255, 255, 0.5)'
-              class='service-track'/>
-        <text x={holdTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle'
-              dominantBaseline='central'>HOLD
-        </text>
-        <text x={assessTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle'
-              dominantBaseline='central'>ASSESS
-        </text>
-        <text x={trialTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle'
-              dominantBaseline='central'>TRIAL
-        </text>
-        <text x={adoptTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle'
-              dominantBaseline='central'>ADOPT
-        </text>
+        <rect x={serviceTrackOrigin} y='0' width={serviceTrackWidth} height={length} fill='rgba(255, 255, 255, 0.5)' class='service-track'/>
+        <rect x='0' y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill='rgba(255, 255, 255, 0.5)' class='service-track'/>
+        <text x={holdTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle' dominantBaseline='central'>HOLD</text>
+        <text x={assessTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle' dominantBaseline='central'>ASSESS</text>
+        <text x={trialTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle' dominantBaseline='central'>TRIAL</text>
+        <text x={adoptTextX} y={radius} fill='#37474F' fontSize={labelFontSize} textAnchor='middle' dominantBaseline='central'>ADOPT</text>
         {
           this.state.points
             .map(item => {

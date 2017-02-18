@@ -18,6 +18,7 @@ class App extends React.Component {
       points: initialState.points || []
     }
     this.screen2Cartesian = this.screen2Cartesian.bind(this)
+    this.didChangedPoints = this.didChangedPoints.bind(this)
   }
 
   didChangedPoints(points) {
@@ -77,11 +78,15 @@ class App extends React.Component {
             <RadarList
               title="Techniques"
               points={items2nd}
+              allPoints={points}
+              updatePoint={this.didChangedPoints}
               key={`${UUID.create().toString()}`}/>
           </div>
           <div className="col-md-4 col-md-offset-4">
             <RadarList
               title="Tools"
+              updatePoint={this.didChangedPoints}
+              allPoints={points}
               points={items
                 .filter(({ x, y }) => x > 0 && y > 0)
                 .map((point) => this.cartesian2Screen(point))}
@@ -92,7 +97,7 @@ class App extends React.Component {
           <div className="col-md-12">
             <Radar radius={radius}
                    points={points}
-                   didChangedPoints={this.didChangedPoints.bind(this)}/>
+                   didChangedPoints={this.didChangedPoints}/>
           </div>
         </div>
         <div className="row">
@@ -100,12 +105,16 @@ class App extends React.Component {
             <RadarList
               title="Platforms"
               points={items3rd}
+              allPoints={points}
+              updatePoint={this.didChangedPoints}
               key={`${UUID.create().toString()}`}/>
           </div>
           <div className="col-md-4 col-md-offset-4">
             <RadarList
               title="Languages & Frameworks"
               points={items4th}
+              allPoints={points}
+              updatePoint={this.didChangedPoints}
               key={`${UUID.create().toString()}`}/>
           </div>
         </div>
