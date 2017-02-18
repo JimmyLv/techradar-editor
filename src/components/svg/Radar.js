@@ -26,19 +26,30 @@ class RadarComponent extends React.Component {
       id: UUID.create().toString()
     }
     point = this.screen2Cartesian(point)
-    let deletePoints = points.filter(function (item) {
-      return (point.x >= item.x - pointRadius) && (point.x <= item.x + pointRadius) && (point.y >= item.y - pointRadius) && (point.y <= item.y + pointRadius)
-    })
-    if (deletePoints.length > 0) {
-      let index = points.indexOf(deletePoints[0])
-      points.splice(index, 1)
+    let pointSelected = points
+      .filter(item => (
+        (point.x >= item.x - pointRadius)
+        &&
+        (point.x <= item.x + pointRadius)
+        &&
+        (point.y >= item.y - pointRadius)
+        &&
+        (point.y <= item.y + pointRadius))
+      )
+    if (pointSelected.length > 0) {
+      let pointToDelete = pointSelected[0]
+      let index = points.indexOf(pointToDelete)
+      let deletePoint = confirm(`delete ${pointToDelete.name} point?`)
+      if (deletePoint) {
+        points.splice(index, 1) // select to delete
+      }
     } else {
       let enterName = prompt('Enter a value')
-      let type = confirm('Is a new one?')
       if (enterName === null) {
         return
       }
       point.name = enterName
+      let type = confirm('Is a new one?')
       point.type = type ? 'new' : 'old'
       points.push(point)
     }
