@@ -142,6 +142,6 @@ class App extends React.Component {
 }
 
 export default connect((props, ref) => ({
-  value: 'state',
-  setValue: value => ref('state').set(value)
+  value: 'tech-radar-state',
+  setValue: value => ref('tech-radar-state').set(value)
 }))(App)
