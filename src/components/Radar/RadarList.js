@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Button from '../common/Button'
-import _ from 'lodash'
 import './RadarList.scss'
 
 class RadarList extends React.Component {
@@ -17,8 +16,6 @@ class RadarList extends React.Component {
     }
     let toChange = confirm('Are u sure?')
     if (toChange) {
-      let points = this.props.points
-
       const mergedPoints = this.props.allPoints.map(
         (item) => {
           if (item.id === point.id) {
@@ -36,20 +33,14 @@ class RadarList extends React.Component {
       <div>
         {title}
         <ul>
-          {points.map((point) => <li>
+          {points.map((point) => <li key={point.id}>
             <span>{point.index}. {point.name}    </span>
-            <Button title='修改'
-                    onClick={() => this.handleClick(point)}
-            />
+            <Button title='修改' onClick={() => this.handleClick(point)} />
           </li>)}
         </ul>
       </div>
     )
   }
 }
-
-// Uncomment properties you need
-// RadarList.propTypes = {}
-// RadarList.defaultProps = {}
 
 export default RadarList

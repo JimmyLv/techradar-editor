@@ -2,16 +2,28 @@
 import './App.css'
 
 import React from 'react'
+import firebase from 'firebase'
+import { connect } from 'react-firebase'
+
 import Radar from './svg/Radar'
 import RadarList from './Radar/RadarList'
-import { loadState, saveState } from './localStorage'
+
+// Initialize Firebase
+const config = {
+  apiKey: 'AIzaSyB9S8V2ZNyrJAxsZ7gMjCI-HkjTIMGYfoo',
+  authDomain: 'tech-radar-editor.firebaseapp.com',
+  databaseURL: 'https://tech-radar-editor.firebaseio.com',
+  storageBucket: 'tech-radar-editor.appspot.com',
+  messagingSenderId: '153565518091'
+}
+firebase.initializeApp(config)
 
 const UUID = require('uuid-js')
 
 class App extends React.Component {
-  constructor() {
-    super()
-    let initialState = loadState() || {}
+  constructor(props) {
+    super(props)
+    let initialState = props.value || {}
     this.state = {
       page: 'create',
       radius: 300,
@@ -28,7 +40,13 @@ class App extends React.Component {
       radius: 250,
       points: points
     })
-    saveState({ points })
+    let items = points
+      .map((point) => ({
+        ...point,
+        index: points.indexOf(point) + 1
+      }))
+
+    this.props.setValue({ points: items })
   }
 
   cartesian2Screen(point) {
@@ -123,6 +141,7 @@ class App extends React.Component {
   }
 }
 
-App.defaultProps = {}
-
-export default App
+export default connect((props, ref) => ({
+  value: 'state',
+  setValue: value => ref('state').set(value)
+}))(App)

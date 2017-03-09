@@ -158,10 +158,4 @@ class RadarComponent extends React.Component {
   }
 }
 
-RadarComponent.displayName = 'SvgRadarComponent'
-
-// Uncomment properties you need
-// RadarComponent.propTypes = {};
-// RadarComponent.defaultProps = {};
-
 export default RadarComponent
